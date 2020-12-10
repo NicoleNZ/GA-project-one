@@ -1,22 +1,32 @@
+console.log("app is running");
 
-const onButtonClick = (event) => {
+
+
+
+$("#go").on("click", (event) => {
+    console.log("Go button was clicked!");
     event.preventDefault();
     const $country = $('input[name="country"]');
-    $country.val();
-    console.log("val: ", $country.val())
-};
-
-
-$('#button-two').on("click", () => {
-console.log("Capital button clicked");
-const countryData = $.get(`https://restcountries.eu/rest/v2/name/`, (data) => {
-    console.log(data);
-    // countryTyped = data.capital;
-    //const language = data.languages.name; 
-    //const flag = data.flag;
-    //console.log(capital);
-    //console.log(language);
-    //console.timeLog(flag);  
-
+    const $countryTyped = $country.val();
+    const countryData = $.get(`https://restcountries.eu/rest/v2/name/${$countryTyped}`, (data) => {
+        const capital = data[0].capital;
+        console.log(capital);
+        const language = data[0].languages[0].name;
+        console.log(language);
+        const currencyCode = data[0].currencies[0].code;
+        console.log(currencyCode);
+        const currencyName = data[0].currencies[0].name;
+        console.log(currencyName);
+        const flag = data[0].flag;
+        console.log(flag);
+        $("#button-one").append(`<img class="images" id="flag-img" src="${flag}"></img>`);
     });
+
+
+    const countryImages = $.get(`https://api.unsplash.com/search/photos?query=${$countryTyped}&client_id=0GTjLXehAwMxmSfFrV-PDAi35FISuLBpI2zIzpWxZD8`, (data) => {
+        const randomIndex = data.results[Math.floor(Math.random() * data.results.length)];
+        countryImg = randomIndex.urls.small;
+        console.log(countryImg);
+        $("#img-here").append(`<img class="images" id="country-img" src="${countryImg}"></img>`)
+        });
 });

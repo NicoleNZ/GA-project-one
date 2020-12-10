@@ -1,0 +1,10 @@
+#flag-img {
+    max-width: 95%;
+    height: auto;
+}
+
+#country-img {
+    max-width: 95%;
+    height: auto;
+    align-self: center;
+}
