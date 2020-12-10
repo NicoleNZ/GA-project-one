@@ -1,10 +1,17 @@
 #flag-img {
     max-width: 95%;
-    height: auto;
+    height: 400px;
+    align-self: center;
+}
+
+#capital-img {
+    max-width: 95%;
+    height: 400px;
+    align-self: center;
 }
 
 #country-img {
     max-width: 95%;
-    height: auto;
+    height: 400px;
     align-self: center;
 }
