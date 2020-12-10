@@ -15,3 +15,12 @@
     height: 400px;
     align-self: center;
 }
+
+body {
+
+}
+
+#heading {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+}
