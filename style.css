@@ -1,3 +1,30 @@
+body {
+
+}
+
+#top-buffer {
+    height: 50px;
+}
+
+.text {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+}
+
+#mid-buffer {
+    height: 20px;
+}
+
+#bottom-buffer {
+    height: 50px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex;
+    }
+
 #flag-img {
     max-width: 95%;
     height: 400px;
@@ -16,11 +43,5 @@
     align-self: center;
 }
 
-body {
 
-}
 
-#heading {
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-}
