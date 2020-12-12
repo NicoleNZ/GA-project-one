@@ -27,7 +27,8 @@ $("#go").on("click", (event) => {
         console.log(currencySymbol);
         const flag = data[0].flag;
         console.log(flag);
-        $("#button-one").append(`<img class="images" id="flag-img" src="${flag}"></img>`);
+        $("#slide2").append(`<img src="${flag}" alt=Flag of ${countryTyped} class="carousel-images"></img>`);
+        $("#fact-list").append(`<h4 class="text" id="h4-countryfacts">Country Facts</h4>`);
         $("#fact-list").append(`<li>World Region: ${subregion}</li>`);
         $("#fact-list").append(`<li>Capital: ${capital}</li>`);
         $("#fact-list").append(`<li>Population: ${population}</il>`);
@@ -38,13 +39,15 @@ $("#go").on("click", (event) => {
         const capitalImages = $.get(`https://api.unsplash.com/search/photos?query=${capital}&client_id=0GTjLXehAwMxmSfFrV-PDAi35FISuLBpI2zIzpWxZD8`, (data) => {
             const randomIndex = data.results[Math.floor(Math.random() * data.results.length)];
             capitalImg = randomIndex.urls.small;
-            $("#button-two").append(`<img class="images" id="capital-img" src="${capitalImg}"></img>`)
+            capitalAltText = randomIndex.alt_description;
+            $("#slide1").append(`<img src="${capitalImg}" alt="${capitalAltText}" class="carousel-images"></img>`)
         });
 
         const countryImages = $.get(`https://api.unsplash.com/search/photos?query=${countryTyped}+map&client_id=0GTjLXehAwMxmSfFrV-PDAi35FISuLBpI2zIzpWxZD8`, (data) => {
             const randomIndex = data.results[Math.floor(Math.random() * data.results.length)];
             countryImg = randomIndex.urls.small;
-            $("#button-three").append(`<img class="images" id="country-img" src="${countryImg}"></img>`)
+            countryAltText = randomIndex.alt_description;
+            $("#slide3").append(`<img src="${countryImg}" alt="${countryAltText}" class="carousel-images"></img>`)
         });
     });
 });
