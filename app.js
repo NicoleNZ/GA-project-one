@@ -12,10 +12,8 @@ $("#go").on("click", (event) => {
     const country = $('input[name="country"]');
     const countryTyped = country.val();
     const countryData = $.get(`https://restcountries.eu/rest/v2/name/${countryTyped}`, (data) => {
-        const subregion = data[0].subregion;
-        console.log(subregion);    
+        const subregion = data[0].subregion;  
         const capital = data[0].capital;
-        console.log(capital);
         const population = data[0].population;
         console.log(population);
         const language = data[0].languages[0].name;
