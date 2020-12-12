@@ -2,6 +2,12 @@ console.log("app is running");
 
 $("#go").on("click", (event) => {
     console.log("Go button was clicked!");
+    $("#fact-list").empty();
+    $("#slide1").empty();
+    $("#slide2").empty();
+    $("#slide3").empty();
+    $("#slide4").empty();    
+    $("#carousel-id").css("border", "").css("padding", "").css("background-color", "");
     event.preventDefault();
     const country = $('input[name="country"]');
     const countryTyped = country.val();
@@ -26,7 +32,7 @@ $("#go").on("click", (event) => {
         console.log(flag);
         const countryCode = data[0].alpha2Code;
 
-        $("#slide2").append(`<img src="${flag}" alt=Flag of ${countryTyped} class="carousel-images"></img>`);
+        $("#slide2").append(`<img src="${flag}" alt=Flag of ${countryTyped} class="d-block w-100"></img>`);
         $("#fact-list").append(`<h4 class="text" id="h4-countryfacts">Country Facts</h4>`);
         $("#fact-list").append(`<li>World Region: ${subregion}</li>`);
         $("#fact-list").append(`<li>Capital: ${capital}</li>`);
@@ -35,23 +41,32 @@ $("#go").on("click", (event) => {
         $("#fact-list").append(`<li>Timezone: ${timezone}</li>`);
         $("#fact-list").append(`<li>Currency: ${currencyName} (${currencySymbol}${currencyCode})</li>`);
 
-        const capitalImages = $.get(`https://api.unsplash.com/search/photos?query=${capital}&client_id=0GTjLXehAwMxmSfFrV-PDAi35FISuLBpI2zIzpWxZD8`, (data) => {
+        const capitalImages = $.get(`https://api.unsplash.com/search/photos?query=${capital}&orientation=landscape&client_id=0GTjLXehAwMxmSfFrV-PDAi35FISuLBpI2zIzpWxZD8`, (data) => {
             const randomIndex = data.results[Math.floor(Math.random() * data.results.length)];
             capitalImg = randomIndex.urls.small;
             capitalAltText = randomIndex.alt_description;
-            $("#slide1").append(`<img src="${capitalImg}" alt="${capitalAltText}" class="carousel-images"></img>`)
+            $("#slide1").append(`<img src="${capitalImg}" alt="${capitalAltText}" class="d-block w-100"></img>`)
         });
 
-        const countryImages = $.get(`https://api.unsplash.com/search/photos?query=local+${countryTyped}+food&client_id=0GTjLXehAwMxmSfFrV-PDAi35FISuLBpI2zIzpWxZD8`, (data) => {
+        const countryImages = $.get(`https://api.unsplash.com/search/photos?query=local+${countryTyped}+culture&orientation=landscape&client_id=0GTjLXehAwMxmSfFrV-PDAi35FISuLBpI2zIzpWxZD8`, (data) => {
             const randomIndex = data.results[Math.floor(Math.random() * data.results.length)];
-            localFoodImg = randomIndex.urls.small;
-            localFoodAltText = randomIndex.alt_description;
-            $("#slide3").append(`<img src="${localFoodImg}" alt="${localFoodAltText}" class="carousel-images"></img>`)
+            countryImg = randomIndex.urls.small;
+            countryAltText = randomIndex.alt_description;
+            $("#slide3").append(`<img src="${countryImg}" alt="${countryAltText}" class="d-block w-100"></img>`)
+        });
+
+        const countryMapImages = $.get(`https://api.unsplash.com/search/photos?query=${countryTyped}+map&orientation=landscape&client_id=0GTjLXehAwMxmSfFrV-PDAi35FISuLBpI2zIzpWxZD8`, (data) => {
+            const randomIndex = data.results[Math.floor(Math.random() * data.results.length)];
+            countryMapImg = randomIndex.urls.small;
+            countryMapAltText = randomIndex.alt_description;
+            $("#slide4").append(`<img src="${countryMapImg}" alt="${countryMapAltText}" class="d-block w-100"></img>`)
         });
 
         const greeting = $.get(`https://fourtonfish.com/hellosalut/?cc=${countryCode}`, (data) => {
             const sayHello = data.hello;
             $("#fact-list").append(`<li>Local Greeting: ${sayHello}!</li>`);
         });
+
+        $("#carousel-id").css("border", "groove").css("padding", "5px").css("background-color", "lightgrey");
     });
 });
