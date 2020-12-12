@@ -9,7 +9,7 @@ body {
 }
 
 #top-buffer {
-    height: 50px;
+    height: 20px;
 }
 
 .text {
@@ -18,11 +18,11 @@ body {
 }
 
 #mid-buffer {
-    height: 50px;
+    height: 20px;
 }
 
 #bottom-buffer {
-    height: 100px;
+    height: 10px;
 }
 
 form {
@@ -36,13 +36,12 @@ form {
     padding-bottom: 10px;
     }
     
-.carousel-images {
-    max-width: auto;
-    height: auto;
-    align-self: center;
+.d-block    {
+    max-height: 250px;
 }
 
 #carousel-facts {
+    padding-top: 30px;
     max-width: 1000px;
     position: relative;
     margin: auto;
@@ -68,5 +67,5 @@ form {
 }
 
 #facts  {
-    padding-left: 100px;
+    padding-left: 50px;
 }
