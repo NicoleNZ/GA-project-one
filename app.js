@@ -2,6 +2,10 @@ console.log("app is running");
 
 $("#go").on("click", (event) => {
     console.log("Go button was clicked!");
+    $("#fact-list").empty();
+    $("#slide1").empty();
+    $("#slide2").empty();
+    $("#slide3").empty();
     event.preventDefault();
     const country = $('input[name="country"]');
     const countryTyped = country.val();

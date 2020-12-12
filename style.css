@@ -31,8 +31,9 @@ form {
     align-items: flex;
     }
 
-    #h4-countryfacts    {
-        text-align: left;
+#h4-countryfacts    {
+    text-align: left;
+    padding-bottom: 10px;
     }
     
 .carousel-images {
@@ -64,4 +65,8 @@ form {
 
 #right   {
     right: 0;
+}
+
+#facts  {
+    padding-left: 100px;
 }
