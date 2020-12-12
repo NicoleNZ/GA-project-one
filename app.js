@@ -1,8 +1,5 @@
 console.log("app is running");
 
-
-
-
 $("#go").on("click", (event) => {
     console.log("Go button was clicked!");
     event.preventDefault();
@@ -27,6 +24,8 @@ $("#go").on("click", (event) => {
         console.log(currencySymbol);
         const flag = data[0].flag;
         console.log(flag);
+        const countryCode = data[0].alpha2Code;
+
         $("#slide2").append(`<img src="${flag}" alt=Flag of ${countryTyped} class="carousel-images"></img>`);
         $("#fact-list").append(`<h4 class="text" id="h4-countryfacts">Country Facts</h4>`);
         $("#fact-list").append(`<li>World Region: ${subregion}</li>`);
@@ -43,11 +42,16 @@ $("#go").on("click", (event) => {
             $("#slide1").append(`<img src="${capitalImg}" alt="${capitalAltText}" class="carousel-images"></img>`)
         });
 
-        const countryImages = $.get(`https://api.unsplash.com/search/photos?query=${countryTyped}+map&client_id=0GTjLXehAwMxmSfFrV-PDAi35FISuLBpI2zIzpWxZD8`, (data) => {
+        const countryImages = $.get(`https://api.unsplash.com/search/photos?query=local+${countryTyped}+food&client_id=0GTjLXehAwMxmSfFrV-PDAi35FISuLBpI2zIzpWxZD8`, (data) => {
             const randomIndex = data.results[Math.floor(Math.random() * data.results.length)];
-            countryImg = randomIndex.urls.small;
-            countryAltText = randomIndex.alt_description;
-            $("#slide3").append(`<img src="${countryImg}" alt="${countryAltText}" class="carousel-images"></img>`)
+            localFoodImg = randomIndex.urls.small;
+            localFoodAltText = randomIndex.alt_description;
+            $("#slide3").append(`<img src="${localFoodImg}" alt="${localFoodAltText}" class="carousel-images"></img>`)
+        });
+
+        const greeting = $.get(`https://fourtonfish.com/hellosalut/?cc=${countryCode}`, (data) => {
+            const sayHello = data.hello;
+            $("#fact-list").append(`<li>Local Greeting: ${sayHello}!</li>`);
         });
     });
 });
