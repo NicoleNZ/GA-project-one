@@ -1,7 +1,5 @@
-console.log("app is running");
-
 $("#go").on("click", (event) => {
-    console.log("Go button was clicked!");
+
     $("#fact-list").empty();
     $("#slide1").empty();
     $("#slide2").empty();
@@ -12,22 +10,15 @@ $("#go").on("click", (event) => {
     const country = $('input[name="country"]');
     const countryTyped = country.val();
     const countryData = $.get(`https://restcountries.eu/rest/v2/name/${countryTyped}`, (data) => {
-        const subregion = data[0].subregion;  
+        const subregion = data[0].subregion;
         const capital = data[0].capital;
         const population = data[0].population;
-        console.log(population);
         const language = data[0].languages[0].name;
-        console.log(language);
         const timezone = data[0].timezones[0];
-        console.log(timezone);  
         const currencyCode = data[0].currencies[0].code;
-        console.log(currencyCode);
         const currencyName = data[0].currencies[0].name;
-        console.log(currencyName);
         const currencySymbol = data[0].currencies[0].symbol;
-        console.log(currencySymbol);
         const flag = data[0].flag;
-        console.log(flag);
         const countryCode = data[0].alpha2Code;
 
         $("#slide2").append(`<img src="${flag}" alt=Flag of ${countryTyped} class="d-block w-100"></img>`);
